@@ -9,7 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["title","body"];
+    // protected $guarded = [];
+    // protected $fillable = ["title","body"];
 
     //si queremos cambiarle el nombre a la tabla asociada
     // protected $table = "posts";

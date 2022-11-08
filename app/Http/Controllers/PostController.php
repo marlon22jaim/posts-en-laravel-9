@@ -27,8 +27,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "title"=>["required","min:4"],
-            "body"=>["required","min:4"],
+            "title" => ["required", "min:4"],
+            "body" => ["required", "min:4"],
 
         ]);
         $post = new Post;
@@ -38,5 +38,25 @@ class PostController extends Controller
 
         session()->flash("status", "Post created!");
         return to_route("posts.index");
+    }
+
+    public function edit(Post $post)
+    {
+        return view("posts.edit", ["post" => $post]);
+    }
+    public function update(Request $request, Post $post)
+    {
+        $request->validate([
+            "title" => ["required", "min:4"],
+            "body" => ["required", "min:4"],
+
+        ]);
+
+        $post->title = $request->input("title");
+        $post->body = $request->input("body");
+        $post->save();
+
+        session()->flash("status", "Post update!");
+        return to_route("posts.show" , $post);
     }
 }

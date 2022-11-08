@@ -2,16 +2,20 @@
 
     <h1>Create new Post</h1>
 
-    <form>
+    <form action="{{ route('posts.store') }}" method="POST">
+        @csrf
         <label>
-            Title
-            <input type="text">
+            Title<br>
+            <input name="title" type="text">
+        </label><br>
+        <label>
+            Body<br>
+            <textarea name="body"></textarea>
         </label>
-        <label for="">
-            Body
-            <textarea></textarea>
-        </label>
-        <button type="submit"></button>
+
+        <button type="submit">
+            Enviar
+        </button>
     </form>
 
 

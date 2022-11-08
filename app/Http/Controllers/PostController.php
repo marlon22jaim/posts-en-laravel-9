@@ -46,6 +46,14 @@ class PostController extends Controller
     {
         $post->update($request->validated());
 
-        return to_route("posts.show", $post)->with("status", "Post created");
+        return to_route("posts.show", $post)->with("status", "Post Updated");
+    }
+
+
+    public function destroy(Post $post)
+    {
+        $name = $post->title;
+        $post->delete();
+        return to_route("posts.index")->with("status", "Post deleted " . $name);
     }
 }

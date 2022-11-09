@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example - {{ $title ?? '' }}</title>
     <meta name="description" content="{{ $metaDescription ?? 'Default meta description' }}">
-    <link rel="stylesheet" href="/css/app.css">
-    <script src="/js/app.js"></script>
+    @vite(['resources/css/app.scss', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="bg-slate-200">
     <x-layouts.navigation></x-layouts.navigation>
 
     @if (session('status'))

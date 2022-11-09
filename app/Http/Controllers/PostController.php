@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         Post::create($request->validated());
 
-        return to_route("posts.index")->with("status", "Post created");
+        return to_route("posts.index")->with("status", "Post creado");
     }
 
 
@@ -46,7 +46,7 @@ class PostController extends Controller
     {
         $post->update($request->validated());
 
-        return to_route("posts.show", $post)->with("status", "Post Updated");
+        return to_route("posts.show", $post)->with("status", "Post Actualizado");
     }
 
 
@@ -54,6 +54,6 @@ class PostController extends Controller
     {
         $name = $post->title;
         $post->delete();
-        return to_route("posts.index")->with("status", "Post deleted " . $name);
+        return to_route("posts.index")->with("status", "Post Eliminado " . $name);
     }
 }

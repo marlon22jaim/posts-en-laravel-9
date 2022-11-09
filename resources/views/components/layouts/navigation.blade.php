@@ -40,6 +40,19 @@
                         </a>
                     </div>
                 </div>
+
+
+                <div class="ml-auto">
+                    <div class="flex space-x-4">
+
+                        <!-- Active: 'text-sky-600 dark:text-white', Inactive 'text-slate-400' -->
+                        <a href="{{ route('register') }}"
+                            class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs("register") ? 'text-sky-600'  : 'text-slate-400'}}">
+                            Register
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

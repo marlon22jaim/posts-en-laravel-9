@@ -30,12 +30,12 @@
                         </a>
                         <!-- Active: 'text-sky-600 dark:text-white', Inactive 'text-slate-400' -->
                         <a href="{{ route('about') }}"
-                            class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs("about") ? 'text-sky-600'  : 'text-slate-400'}}">
+                            class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs('about') ? 'text-sky-600' : 'text-slate-400' }}">
                             About
                         </a>
                         <!-- Active: 'text-sky-600 dark:text-white', Inactive 'text-slate-400' -->
                         <a href="{{ route('contact') }}"
-                            class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs("contact") ? 'text-sky-600'  : 'text-slate-400'}}">
+                            class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs('contact') ? 'text-sky-600' : 'text-slate-400' }}">
                             Contact
                         </a>
                     </div>
@@ -44,12 +44,29 @@
 
                 <div class="ml-auto">
                     <div class="flex space-x-4">
+                        @guest
 
-                        <!-- Active: 'text-sky-600 dark:text-white', Inactive 'text-slate-400' -->
-                        <a href="{{ route('register') }}"
-                            class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs("register") ? 'text-sky-600'  : 'text-slate-400'}}">
-                            Register
-                        </a>
+                            <!-- Active: 'text-sky-600 dark:text-white', Inactive 'text-slate-400' -->
+                            <a href="{{ route('register') }}"
+                                class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs('register') ? 'text-sky-600' : 'text-slate-400' }}">
+                                Register
+                            </a>
+                            <a href="{{ route('login') }}"
+                                class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 {{ request()->routeIs('register') ? 'text-sky-600' : 'text-slate-400' }}">
+                                Login
+                            </a>
+                        @endguest
+
+                        @auth
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <a class="lg:px-3 py-2 text-sm font-medium rounded-md text-slate-400 hover:text-sky-600 cursor-pointer"
+                                onclick="this.closest('form').submit()"
+                                >
+                                    Cerrar sesión
+                                </a>
+                            </form>
+                        @endauth
                     </div>
                 </div>
 
@@ -57,7 +74,3 @@
         </div>
     </div>
 </nav>
-
-
-
-
